@@ -1,0 +1,14 @@
+
+prometheusOperator:
+  enabled: false
+prometheus:
+  enabled: true
+  prometheusSpec:
+    retention: 10d
+    storageSpec:
+     volumeClaimTemplate:
+       spec:
+         accessModes: ["ReadWriteOnce"]
+         resources:
+           requests:
+             storage: 10Gi
