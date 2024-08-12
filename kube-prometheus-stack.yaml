@@ -1,14 +1,12 @@
-prometheusOperator:
-  enabled: false
 prometheus:
   enabled: true
   prometheusSpec:
     retention: 10d
-    # storageSpec:
-    #  volumeClaimTemplate:
-    #    spec:
-    #      storageClassName: hcloud-volumes
-    #      accessModes: ["ReadWriteOnce"]
-    #      resources:
-    #        requests:
-    #          storage: 10Gi
+    storageSpec:
+     volumeClaimTemplate:
+       spec:
+         storageClassName: hcloud-volumes
+         accessModes: ["ReadWriteOnce"]
+         resources:
+           requests:
+             storage: 10Gi
