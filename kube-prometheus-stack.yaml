@@ -1,4 +1,5 @@
-
+crds:
+  enabled: false
 prometheusOperator:
   enabled: false
 prometheus:
