@@ -9,6 +9,7 @@ prometheus:
     storageSpec:
      volumeClaimTemplate:
        spec:
+         storageClassName: hcloud-volumes
          accessModes: ["ReadWriteOnce"]
          resources:
            requests:
