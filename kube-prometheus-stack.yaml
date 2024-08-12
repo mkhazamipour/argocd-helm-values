@@ -7,7 +7,7 @@ prometheus:
   prometheusSpec:
     retention: 10d
     storageSpec:
-     volumeClaimTemplates:
+     volumeClaimTemplate:
        spec:
          storageClassName: hcloud-volumes
          accessModes: ["ReadWriteOnce"]
