@@ -71,7 +71,7 @@ alerting:
                   bot_token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
                   room_id: BBBBBBBBBBBBBBBBBBBBBBBBBBB
                 disableResolveMessage: false
-          - orgId: 1
+        - orgId: 1
             name: webex-team2
             receivers:
               - uid: aduvvpy39648wa
