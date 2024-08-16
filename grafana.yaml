@@ -186,3 +186,5 @@ sidecar:
     initNotifiers: false
     # Sets the size limit of the notifier sidecar emptyDir volume
     sizeLimit: {}
+deploymentStrategy:
+  type: Recreate
