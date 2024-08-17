@@ -13,7 +13,7 @@ persistence:
   enabled: true
   size: 10Gi
 
-alerting:
+alerting: {}
   # rules.yaml:
   #   apiVersion: 1
   #   groups:
@@ -58,28 +58,28 @@ alerting:
   #             some_key: some_value
   #           labels:
   #             team: sre_team_1
-  contactpoints.yaml:
-    secret:
-      apiVersion: 1
-      contactPoints:
-          - orgId: 1
-            name: webex-team1
-            receivers:
-              - uid: bduvvmtg40bupc
-                type: webex
-                settings:
-                  bot_token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                  room_id: BBBBBBBBBBBBBBBBBBBBBBBBBBB
-                disableResolveMessage: false
-          - orgId: 1
-            name: webex-team2
-            receivers:
-              - uid: aduvvpy39648wa
-                type: webex
-                settings:
-                  bot_token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                  room_id: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-                disableResolveMessage: false
+  # contactpoints.yaml:
+  #   secret:
+  #     apiVersion: 1
+  #     contactPoints:
+  #         - orgId: 1
+  #           name: webex-team1
+  #           receivers:
+  #             - uid: bduvvmtg40bupc
+  #               type: webex
+  #               settings:
+  #                 bot_token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  #                 room_id: BBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #               disableResolveMessage: false
+  #         - orgId: 1
+  #           name: webex-team2
+  #           receivers:
+  #             - uid: aduvvpy39648wa
+  #               type: webex
+  #               settings:
+  #                 bot_token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  #                 room_id: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  #               disableResolveMessage: false
 
 ## Configure notifiers
 ## ref: http://docs.grafana.org/administration/provisioning/#alert-notification-channels
@@ -101,7 +101,7 @@ notifiers: {}
 ## Requires at least Grafana 5 to work and can't be used together with parameters dashboardProviders, datasources and dashboards
 sidecar:
   alerts:
-    enabled: false
+    enabled: true
     # Additional environment variables for the alerts sidecar
     env: {}
     # Do not reprocess already processed unchanged resources on k8s API reconnect.
@@ -109,7 +109,7 @@ sidecar:
     # label that the configmaps with alert are marked with
     label: grafana_alert
     # value of label that the configmaps with alert are set to
-    labelValue: ""
+    labelValue: "true"
     # Log level. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL.
     # logLevel: INFO
     # If specified, the sidecar will search for alert config-maps inside this namespace.
