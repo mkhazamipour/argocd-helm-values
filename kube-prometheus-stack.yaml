@@ -12,3 +12,5 @@ prometheus:
          resources:
            requests:
              storage: 10Gi
+defaultRules:
+  create: false
