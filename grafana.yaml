@@ -10,7 +10,7 @@ ingress:
         - grafana.cluster.morteza.dev
 
 persistence:
-  enabled: true
+  enabled: false
   size: 10Gi
 
 alerting: {}
