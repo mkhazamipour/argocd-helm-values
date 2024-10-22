@@ -1,0 +1,12 @@
+global:
+  logLevel: 4
+  leaderElection:
+    namespace: "cert-manager"
+crds:
+  enabled: true
+  keep: true
+replicaCount: 3
+webhook:
+  replicaCount: 2
+cainjector:
+  replicaCount: 2
