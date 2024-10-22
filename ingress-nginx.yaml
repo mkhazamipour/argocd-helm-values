@@ -1,0 +1,10 @@
+controller:
+  watchIngressWithoutClass: true
+  hostNetwork: true
+  hostPort:
+    enabled: true
+  kind: DaemonSet
+  service:
+    type: NodePort
+  metrics:
+    enabled: true
