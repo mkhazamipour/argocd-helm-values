@@ -16,9 +16,3 @@ persistence:
 logLevel: warning
 metrics:
   enabled: true
-core:
-  replicas: 1
-jobservice:
-  replicas: 1
-registry:
-  replicas: 1
