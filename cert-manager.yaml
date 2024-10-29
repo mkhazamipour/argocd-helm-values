@@ -1,5 +1,5 @@
 global:
-  logLevel: 4
+  logLevel: 1
   leaderElection:
     namespace: "cert-manager"
 crds:
