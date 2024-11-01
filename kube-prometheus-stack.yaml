@@ -52,4 +52,4 @@ prometheusOperator:
     enabled: false
 kubeScheduler:
   serviceMonitor:
-    insecureSkipVerify: true
+    insecureSkipVerify: false
