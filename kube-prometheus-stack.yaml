@@ -1,16 +1,59 @@
-prometheusOperator:
+crds:
   enabled: true
-prometheus:
-  enabled: true
-  prometheusSpec:
-    retention: 10d
-    storageSpec:
-     volumeClaimTemplate:
-       spec:
-         storageClassName: hcloud-volumes
-         accessModes: ["ReadWriteOnce"]
-         resources:
-           requests:
-             storage: 10Gi
 defaultRules:
   create: false
+alertmanager:
+  enabled: false
+grafana:
+  enabled: false
+kubeEtcd:
+  enabled: true
+  ## Configure secure access to the etcd cluster by loading a secret into prometheus and
+  ## specifying security configuration below. For example, with a secret named etcd-client-cert
+  ##
+  ## serviceMonitor:
+  ##   scheme: https
+  ##   insecureSkipVerify: false
+  ##   serverName: localhost
+  ##   caFile: /etc/prometheus/secrets/etcd-client-cert/etcd-ca
+  ##   certFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client
+  ##   keyFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
+  ##
+kubeStateMetrics:
+  enabled: true
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+prometheus:
+  enabled: true
+  ingress:
+    enabled: true
+    annotations: 
+     cert-manager.io/cluster-issuer: letsencrypt
+    hosts: 
+      - prometheus-stack.cluster.morteza.dev
+    tls: 
+      - secretName: prometheus-stack
+        hosts:
+          - prometheus-stack.cluster.morteza.dev
+  prometheusSpec:
+    ## Secrets is a list of Secrets in the same namespace as the Prometheus object, which shall be mounted into the Prometheus Pods.
+    ## The Secrets are mounted into /etc/prometheus/secrets/. Secrets changes after initial creation of a Prometheus object are not
+    ## reflected in the running Pods. To change the secrets mounted into the Prometheus Pods, the object must be deleted and recreated
+    ## with the new list of secrets.
+    ##
+    secrets: []
+    retention: 14d
+    retentionSize: "10GB"
+    resources: {}
+    # requests:
+    #   memory: 400Mi
+    #   cpu: 200m
+    storageSpec: 
+      volumeClaimTemplate:
+        spec:
+          storageClassName: hcloud-volumes
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
