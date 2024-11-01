@@ -20,7 +20,7 @@ kubeEtcd:
   ##   keyFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
   ##
 kubeStateMetrics:
-  enabled: false
+  enabled: true
 prometheus:
   enabled: true
   prometheusSpec:
