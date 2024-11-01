@@ -20,10 +20,7 @@ kubeEtcd:
   ##   keyFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
   ##
 kubeStateMetrics:
-  enabled: true
-prometheusOperator:
-  admissionWebhooks:
-    enabled: false
+  enabled: false
 prometheus:
   enabled: true
   ingress:
@@ -57,3 +54,9 @@ prometheus:
           resources:
             requests:
               storage: 10Gi
+prometheusOperator:
+  enabled: true
+  tls:
+    enabled: false
+  admissionWebhooks:
+    enabled: false
