@@ -38,5 +38,5 @@ kubeEtcd:
    serverName: localhost
    insecureSkipVerify: false
    caFile: /etc/prometheus/secrets/etcd-client-cert/ca.crt
-   certFile: /etc/prometheus/secrets/etcd-client-cert/healthcheck-client.crt
-   keyFile: /etc/prometheus/secrets/etcd-client-cert/healthcheck-client.key
+   certFile: /etc/prometheus/secrets/etcd-client-cert/peer.crt
+   keyFile: /etc/prometheus/secrets/etcd-client-cert/peer.key
