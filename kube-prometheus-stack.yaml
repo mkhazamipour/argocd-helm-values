@@ -26,6 +26,8 @@ prometheus:
           resources:
             requests:
               storage: 10Gi
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
 prometheusOperator:
   enabled: true
   tls:
