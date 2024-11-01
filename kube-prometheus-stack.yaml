@@ -50,8 +50,3 @@ prometheusOperator:
     enabled: false
   admissionWebhooks:
     enabled: false
-kubeControllerManager:
-  serviceMonitor:
-    enabled: true
-    https: true
-    insecureSkipVerify: true
