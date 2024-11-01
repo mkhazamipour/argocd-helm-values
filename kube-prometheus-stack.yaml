@@ -33,10 +33,14 @@ prometheusOperator:
   admissionWebhooks:
     enabled: false
 kubeEtcd:
+  service:
+    enabled: true
+    port: 2381
+    targetPort: 2379
   serviceMonitor:
    scheme: https
-   serverName: localhost
    insecureSkipVerify: false
+   serverName: localhost
    caFile: /etc/prometheus/secrets/etcd-client-cert/ca.crt
-   certFile: /etc/prometheus/secrets/etcd-client-cert/apiserver-etcd-client.crt
-   keyFile: /etc/prometheus/secrets/etcd-client-cert/apiserver-etcd-client.key
+   certFile: /etc/prometheus/secrets/etcd-client-cert/healthcheck-client.crt
+   keyFile: /etc/prometheus/secrets/etcd-client-cert/healthcheck-client.key
