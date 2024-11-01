@@ -2,16 +2,6 @@ prometheus:
   enabled: true
   serviceMonitor:
     enabled: true
-hubble:
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-  relay:
-    prometheus:
-      enabled: true
-      serviceMonitor:
-        enabled: true
 envoy:
   prometheus:
     enabled: true
