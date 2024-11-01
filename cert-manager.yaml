@@ -10,3 +10,6 @@ webhook:
   replicaCount: 2
 cainjector:
   replicaCount: 2
+prometheus:
+  servicemonitor:
+    enabled: true
