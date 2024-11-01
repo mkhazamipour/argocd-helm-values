@@ -50,3 +50,8 @@ prometheusOperator:
     enabled: false
   admissionWebhooks:
     enabled: false
+kubeProxy:
+    jobLabel: jobLabel
+    selector:
+     matchLabels:
+       k8s-app: kube-proxy
