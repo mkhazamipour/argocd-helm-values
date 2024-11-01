@@ -1,3 +1,30 @@
+serviceMonitor:
+  enabled: true
+persistence:
+  type: pvc
+  enabled: false
+  # storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+admin:
+  existingSecret: "grafana-admin-password"
+  userKey: admin-user
+  passwordKey: admin-password
+# grafana.ini:
+#   paths:
+#     data: /var/lib/grafana/
+#     logs: /var/log/grafana
+#     plugins: /var/lib/grafana/plugins
+#     provisioning: /etc/grafana/provisioning
+#   analytics:
+#     check_for_updates: true
+#   log:
+#     mode: console
+#   grafana_net:
+#     url: https://grafana.net
+#   server:
+#     domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
 ingress:
   enabled: true
   annotations: 
@@ -8,183 +35,5 @@ ingress:
     - secretName: grafana-cert
       hosts:
         - grafana.cluster.morteza.dev
-
-persistence:
-  enabled: false
-  size: 10Gi
-
-alerting: {}
-  # rules.yaml:
-  #   apiVersion: 1
-  #   groups:
-  #     - orgId: 1
-  #       name: '{{ .Chart.Name }}_my_rule_group'
-  #       folder: my_first_folder
-  #       interval: 60s
-  #       rules:
-  #         - uid: my_id_1
-  #           title: my_first_rule
-  #           condition: A
-  #           data:
-  #             - refId: A
-  #               datasourceUid: '-100'
-  #               model:
-  #                 conditions:
-  #                   - evaluator:
-  #                       params:
-  #                         - 3
-  #                       type: gt
-  #                     operator:
-  #                       type: and
-  #                     query:
-  #                       params:
-  #                         - A
-  #                     reducer:
-  #                       type: last
-  #                     type: query
-  #                 datasource:
-  #                   type: __expr__
-  #                   uid: '-100'
-  #                 expression: 1==0
-  #                 intervalMs: 1000
-  #                 maxDataPoints: 43200
-  #                 refId: A
-  #                 type: math
-  #           dashboardUid: my_dashboard
-  #           panelId: 123
-  #           noDataState: Alerting
-  #           for: 60s
-  #           annotations:
-  #             some_key: some_value
-  #           labels:
-  #             team: sre_team_1
-  # contactpoints.yaml:
-  #   secret:
-  #     apiVersion: 1
-  #     contactPoints:
-  #         - orgId: 1
-  #           name: webex-team1
-  #           receivers:
-  #             - uid: bduvvmtg40bupc
-  #               type: webex
-  #               settings:
-  #                 bot_token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  #                 room_id: BBBBBBBBBBBBBBBBBBBBBBBBBBB
-  #               disableResolveMessage: false
-  #         - orgId: 1
-  #           name: webex-team2
-  #           receivers:
-  #             - uid: aduvvpy39648wa
-  #               type: webex
-  #               settings:
-  #                 bot_token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  #                 room_id: BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-  #               disableResolveMessage: false
-
-## Configure notifiers
-## ref: http://docs.grafana.org/administration/provisioning/#alert-notification-channels
-##
-notifiers: {}
-#  notifiers.yaml:
-#    notifiers:
-#    - name: email-notifier
-#      type: email
-#      uid: email1
-#      # either:
-#      org_id: 1
-#      # or
-#      org_name: Main Org.
-#      is_default: true
-#      settings:
-#        addresses: an_email_address@example.com
-#    delete_notifiers:
-## Requires at least Grafana 5 to work and can't be used together with parameters dashboardProviders, datasources and dashboards
-sidecar:
-  alerts:
-    enabled: true
-    # Additional environment variables for the alerts sidecar
-    env: {}
-    # Do not reprocess already processed unchanged resources on k8s API reconnect.
-    # ignoreAlreadyProcessed: true
-    # label that the configmaps with alert are marked with
-    label: grafana_alert
-    # value of label that the configmaps with alert are set to
-    labelValue: "true"
-    # Log level. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL.
-    # logLevel: INFO
-    # If specified, the sidecar will search for alert config-maps inside this namespace.
-    # Otherwise the namespace in which the sidecar is running will be used.
-    # It's also possible to specify ALL to search in all namespaces
-    searchNamespace: null
-    # Method to use to detect ConfigMap changes. With WATCH the sidecar will do a WATCH requests, with SLEEP it will list all ConfigMaps, then sleep for 60 seconds.
-    watchMethod: WATCH
-    # search in configmap, secret or both
-    resource: both
-    # watchServerTimeout: request to the server, asking it to cleanly close the connection after that.
-    # defaults to 60sec; much higher values like 3600 seconds (1h) are feasible for non-Azure K8S
-    # watchServerTimeout: 3600
-    #
-    # watchClientTimeout: is a client-side timeout, configuring your local socket.
-    # If you have a network outage dropping all packets with no RST/FIN,
-    # this is how long your client waits before realizing & dropping the connection.
-    # defaults to 66sec (sic!)
-    # watchClientTimeout: 60
-    #
-    # Endpoint to send request to reload alerts
-    reloadURL: "http://localhost:3000/api/admin/provisioning/alerting/reload"
-    # Absolute path to shell script to execute after a alert got reloaded
-    script: null
-    skipReload: false
-    # This is needed if skipReload is true, to load any alerts defined at startup time.
-    # Deploy the alert sidecar as an initContainer.
-    initAlerts: false
-    # Additional alert sidecar volume mounts
-    extraMounts: []
-    # Sets the size limit of the alert sidecar emptyDir volume
-    sizeLimit: {}
-  datasources:
-    enabled: true
-    label: grafana_datasource
-    labelValue: "true"
-  notifiers:
-    enabled: false
-    # Additional environment variables for the notifierssidecar
-    env: {}
-    # Do not reprocess already processed unchanged resources on k8s API reconnect.
-    # ignoreAlreadyProcessed: true
-    # label that the configmaps with notifiers are marked with
-    label: grafana_notifier
-    # value of label that the configmaps with notifiers are set to
-    labelValue: ""
-    # Log level. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL.
-    # logLevel: INFO
-    # If specified, the sidecar will search for notifier config-maps inside this namespace.
-    # Otherwise the namespace in which the sidecar is running will be used.
-    # It's also possible to specify ALL to search in all namespaces
-    searchNamespace: null
-    # Method to use to detect ConfigMap changes. With WATCH the sidecar will do a WATCH requests, with SLEEP it will list all ConfigMaps, then sleep for 60 seconds.
-    watchMethod: WATCH
-    # search in configmap, secret or both
-    resource: both
-    # watchServerTimeout: request to the server, asking it to cleanly close the connection after that.
-    # defaults to 60sec; much higher values like 3600 seconds (1h) are feasible for non-Azure K8S
-    # watchServerTimeout: 3600
-    #
-    # watchClientTimeout: is a client-side timeout, configuring your local socket.
-    # If you have a network outage dropping all packets with no RST/FIN,
-    # this is how long your client waits before realizing & dropping the connection.
-    # defaults to 66sec (sic!)
-    # watchClientTimeout: 60
-    #
-    # Endpoint to send request to reload notifiers
-    reloadURL: "http://localhost:3000/api/admin/provisioning/notifications/reload"
-    # Absolute path to shell script to execute after a notifier got reloaded
-    script: null
-    skipReload: false
-    # Deploy the notifier sidecar as an initContainer in addition to a container.
-    # This is needed if skipReload is true, to load any notifiers defined at startup time.
-    initNotifiers: false
-    # Sets the size limit of the notifier sidecar emptyDir volume
-    sizeLimit: {}
 deploymentStrategy:
   type: Recreate
