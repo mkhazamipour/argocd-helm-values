@@ -31,7 +31,7 @@ prometheusOperator:
   tls:
     enabled: false
   admissionWebhooks:
-    enabled: false
+    enabled: true
 kubeEtcd:
   service:
     enabled: true
