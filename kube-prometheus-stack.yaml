@@ -50,3 +50,6 @@ prometheusOperator:
     enabled: false
   admissionWebhooks:
     enabled: false
+kubeScheduler:
+  serviceMonitor:
+    insecureSkipVerify: true
