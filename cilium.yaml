@@ -30,6 +30,7 @@ hubble:
     tls:
       enabled: true
   relay:
+    enabled: true
     prometheus:
       enabled: true
       serviceMonitor:
