@@ -1,0 +1,151 @@
+#env:
+#  proxyConfig: null
+#ca:
+#  cert: null
+#  key: null
+#  generate: null
+#
+central:
+# # Settings for telemetry data collection.
+  telemetry:
+    enabled: false
+#  resources:
+#    requests:
+#      memory: "4Gi"
+#      cpu: "1500m"
+#    limits:
+#      memory: "8Gi"
+#      cpu: "4000m"
+#
+  persistence:
+#    hostPath: null
+    persistentVolumeClaim:
+#      claimName: null
+#      createClaim: null
+      storageClass: hcloud-volumes
+      size: 20Gi
+#    none: null
+  db:
+    resources:
+      requests:
+        memory: "8Gi"
+        cpu: "4"
+      limits:
+        memory: "16Gi"
+        cpu: "8"
+    persistence:
+      # hostPath: null
+      persistentVolumeClaim:
+        # claimName: null
+        # createClaim: null
+        storageClass: hcloud-volumes
+        size: 10Gi
+
+
+# Configuration options relating to StackRox Scanner.
+scanner:
+  # If this is set to true, StackRox will be deployed without scanner. No other setting in this
+  # section will have any effect.
+  disable: true
+#  # Default number of scanner replicas created upon startup. The actual number might be higher
+#  # or lower if autoscaling is enabled (see below).
+#  replicas: 3
+#
+#  logLevel: INFO
+#
+#  # Settings related to autoscaling the scanner deployment.
+#  autoscaling:
+#    # If true, autoscaling will be disabled. None of the other settings in this section will
+#    # have any effect.
+#    disable: false
+#    minReplicas: 1
+#    maxReplicas: 5
+#
+#  # Resource settings for the scanner deployment.
+#  resources:
+#    requests:
+#      memory: "1500Mi"
+#      cpu: "1000m"
+#    limits:
+#      memory: "4Gi"
+#      cpu: "2000m"
+#
+#  image:
+#    registry: null
+#    name: scanner
+#    tag: 2.3.2
+#    fullRef: null
+#
+#  dbImage:
+#    registry: null
+#    name: scanner-db
+#    tag: 2.3.2
+#    fullRef: null
+#
+#  # Resource settings for the scanner-db deployment.
+#  dbResources:
+#    limits:
+#      cpu: 2
+#      memory: 4Gi
+#    requests:
+#      cpu: 200m
+#      memory: 200Mi
+#
+#  # The admin password setting for communication with scanner's DB.
+#  # When a value is set explicitly, this is always used, even on upgrade.
+#  # Otherwise, a password will be automatically generated if `generate` is set to true,
+#  # or left unset (null) and the Helm chart is being installed (as opposed to upgraded).
+#  dbPassword:
+#    value: null
+#    generate: null
+#
+#  # Settings for the internal service-to-service TLS certificate used by scanner.
+#  # See the documentation for `ca` at the top level for an explanation.
+#  serviceTLS:
+#    cert: null
+#    key: null
+#    generate: null
+#
+#  # Settings for the internal service-to-service TLS certificate used by scanner-db.
+#  # See the documentation for `ca` at the top level for an explanation.
+#  dbServiceTLS:
+#    cert: null
+#    key: null
+#    generate: null
+#
+## Configuration options relating to Scanner V4.
+scannerV4:
+  disable: false
+  indexer:
+    resources:
+      requests:
+        memory: "1500Mi"
+        cpu: "1000m"
+      limits:
+        memory: "3Gi"
+        cpu: "2000m"
+  matcher:
+    replicas: 2
+    resources:
+      requests:
+        memory: "4Gi"
+        cpu: "1000m"
+      limits:
+        memory: "5Gi"
+        cpu: "2000m"
+  db:
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "2Gi"
+      limits:
+        cpu: "2000m"
+        memory: "4Gi"
+    persistence:
+      # hostPath: null
+      persistentVolumeClaim:
+      #   claimName: "scanner-v4-db"
+      #   size: "50Gi"
+      #   createClaim: true
+        storageClass: hcloud-volumes
+      #  none: null
