@@ -5,6 +5,8 @@
 #  key: null
 #  generate: null
 #
+system:
+  enablePodSecurityPolicies: false
 central:
   telemetry:
     enabled: false
@@ -37,8 +39,6 @@ central:
         storageClass: hcloud-volumes
         size: 10Gi
       none: false
-scanner:
-  disable: true
 scannerV4:
   disable: false
   indexer:
@@ -74,5 +74,21 @@ scannerV4:
         createClaim: true
         storageClass: hcloud-volumes
       none: false
-system:
-  enablePodSecurityPolicies: false
+
+scanner:
+  disable: false
+  replicas: 3
+  resources:
+    requests:
+      memory: "1500Mi"
+      cpu: "1000m"
+    limits:
+      memory: "4Gi"
+      cpu: "2000m"
+  dbResources:
+    limits:
+      cpu: 2
+      memory: 4Gi
+    requests:
+      cpu: 200m
+      memory: 200Mi
