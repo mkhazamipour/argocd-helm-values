@@ -16,12 +16,12 @@ central:
       memory: "2Gi"
       cpu: "4000m"
   persistence:
-    persistentVolumeClaim:
-      claimName: central-pvc
-      createClaim: true
-      storageClass: hcloud-volumes
-      size: 20Gi
-    none: false
+    # persistentVolumeClaim:
+    #   claimName: central-pvc
+    #   createClaim: true
+    #   storageClass: hcloud-volumes
+    #   size: 20Gi
+    none: true
   db:
     resources:
       requests:
