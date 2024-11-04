@@ -132,3 +132,5 @@ scannerV4:
         memory: "4Gi"
     persistence:
       none: true
+system:
+  enablePodSecurityPolicies: false
