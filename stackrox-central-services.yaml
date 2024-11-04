@@ -24,7 +24,7 @@ central:
 #      createClaim: null
       storageClass: hcloud-volumes
       size: 20Gi
-#    none: null
+    none: true
   db:
     resources:
       requests:
@@ -40,6 +40,7 @@ central:
         # createClaim: null
         storageClass: hcloud-volumes
         size: 10Gi
+      none: true
 
 
 # Configuration options relating to StackRox Scanner.
@@ -148,4 +149,4 @@ scannerV4:
       #   size: "50Gi"
       #   createClaim: true
         storageClass: hcloud-volumes
-      #  none: null
+      none: true
