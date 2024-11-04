@@ -74,3 +74,5 @@ scannerV4:
         createClaim: true
         storageClass: hcloud-volumes
       none: false
+system:
+  enablePodSecurityPolicies: false
