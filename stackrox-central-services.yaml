@@ -18,12 +18,6 @@ central:
 #      cpu: "4000m"
 #
   persistence:
-#    hostPath: null
-    persistentVolumeClaim:
-#      claimName: null
-#      createClaim: null
-      storageClass: hcloud-volumes
-      size: 20Gi
     none: true
   db:
     resources:
@@ -34,12 +28,6 @@ central:
         memory: "16Gi"
         cpu: "8"
     persistence:
-      # hostPath: null
-      persistentVolumeClaim:
-        # claimName: null
-        # createClaim: null
-        storageClass: hcloud-volumes
-        size: 10Gi
       none: true
 
 
@@ -143,10 +131,4 @@ scannerV4:
         cpu: "2000m"
         memory: "4Gi"
     persistence:
-      # hostPath: null
-      persistentVolumeClaim:
-      #   claimName: "scanner-v4-db"
-      #   size: "50Gi"
-      #   createClaim: true
-        storageClass: hcloud-volumes
       none: true
