@@ -18,11 +18,6 @@ central:
       memory: "2Gi"
       cpu: "4000m"
   persistence:
-    # persistentVolumeClaim:
-    #   claimName: central-pvc
-    #   createClaim: true
-    #   storageClass: hcloud-volumes
-    #   size: 20Gi
     none: true
   db:
     resources:
@@ -74,7 +69,6 @@ scannerV4:
         createClaim: true
         storageClass: hcloud-volumes
       none: false
-
 scanner:
   disable: false
   replicas: 3
