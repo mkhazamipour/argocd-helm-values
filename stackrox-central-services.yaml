@@ -67,7 +67,7 @@ scannerV4:
     persistence:
       persistentVolumeClaim:
         claimName: scanner-v4-db
-        size: 10Gi
+        size: 30Gi
         createClaim: true
         storageClass: hcloud-volumes
       none: false
