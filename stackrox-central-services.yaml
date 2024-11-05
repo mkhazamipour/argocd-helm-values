@@ -43,6 +43,8 @@ scannerV4:
         memory: "3Gi"
         cpu: "2000m"
     replicas: 3
+    autoscaling:
+      disable: true
   matcher:
     replicas: 2
     resources:
@@ -52,6 +54,8 @@ scannerV4:
       limits:
         memory: "5Gi"
         cpu: "2000m"
+    autoscaling:
+      disable: true
   db:
     resources:
       requests:
@@ -84,5 +88,7 @@ scanner:
     requests:
       cpu: 200m
       memory: 200Mi
+    autoscaling:
+      disable: true
 system:
   enablePodSecurityPolicies: false
