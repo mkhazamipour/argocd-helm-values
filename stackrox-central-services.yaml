@@ -30,7 +30,7 @@ central:
         claimName: central-db
         createClaim: true
         storageClass: hcloud-volumes
-        size: 10Gi
+        size: 30Gi
       none: false
 scannerV4:
   disable: false
