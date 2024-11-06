@@ -32,6 +32,17 @@ central:
         storageClass: hcloud-volumes
         size: 30Gi
       none: false
+  exposure:
+    # Ingress configuration.
+    # Disabled by default.
+    ingress:
+      enabled: true
+      # Specify a custom hostname if desired, otherwise accept the default from OpenShift.
+      ingressClassName: nginx
+      host: rhacs.cluster.morteza.dev
+      tls: true
+        secretName: stackrox-tls
+      clusterIssuer: letsencrypt
 scannerV4:
   disable: false
   indexer:
