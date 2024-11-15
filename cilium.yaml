@@ -13,7 +13,7 @@ operator:
     serviceMonitor:
       enabled: true
 hubble:
-  enabled: true
+  enabled: false
   metrics:
     enabled:
     - dns
@@ -30,10 +30,10 @@ hubble:
     tls:
       enabled: true
   relay:
-    enabled: true
+    enabled: false
     prometheus:
       enabled: true
       serviceMonitor:
         enabled: true
   ui:
-    enabled: true
+    enabled: false
