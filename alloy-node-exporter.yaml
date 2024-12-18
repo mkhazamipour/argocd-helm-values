@@ -1,0 +1,5 @@
+alloy:
+  configMap:
+    create: false
+    name: alloy-node-exporter
+    key: config.alloy
