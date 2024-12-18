@@ -36,3 +36,5 @@ mimir:
     compactor:
       compaction_interval: 30m
       deletion_delay: 5m
+gateway:
+  enabledNonEnterprise: true
