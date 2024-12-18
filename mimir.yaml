@@ -1,0 +1,38 @@
+alertmanager:
+  enabled: false
+ruler:
+  enabled: false
+minio:
+  enabled: false
+nginx:
+  enabled: false
+gr-aggr-cache:
+  enabled: false
+gr-metricname-cache:
+  enabled: false
+global:
+  extraEnvFrom:
+    - secretRef:
+        name: mimir-bucket-secret
+mimir:
+  structuredConfig:
+    multitenancy_enabled: false
+    common:
+      storage:
+        backend: s3
+        s3:
+          endpoint: nbg1.your-objectstorage.com
+          region: us-central
+    blocks_storage:
+      s3:
+        bucket_name: monitoring
+        access_key_id: ${AWS_ACCESS_KEY_ID}
+        secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+    limits:
+      compactor_blocks_retention_period: 7d
+      ingestion_rate: <float> | default = 1000000
+      ingestion_burst_size: <int> | default = 2000000
+      max_global_series_per_user: 0
+    compactor:
+      compaction_interval: 30m
+      deletion_delay: 5m
