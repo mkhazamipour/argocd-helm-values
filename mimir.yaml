@@ -17,17 +17,17 @@ global:
 mimir:
   structuredConfig:
     multitenancy_enabled: false
-    common:
-      storage:
-        backend: s3
-        s3:
-          endpoint: nbg1.your-objectstorage.com
-          region: us-central
     blocks_storage:
+      backend: s3
+      bucket_store:
+        sync_dir: /data/tsdb-sync
       s3:
-        bucket_name: monitoring
         access_key_id: ${AWS_ACCESS_KEY_ID}
+        bucket_name: monitoring
+        endpoint: nbg1.your-objectstorage.com
         secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+      tsdb:
+        dir: /data/tsdb
     limits:
       compactor_blocks_retention_period: 7d
       ingestion_rate: <float> | default = 1000000
