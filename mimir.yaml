@@ -30,8 +30,8 @@ mimir:
         dir: /data/tsdb
     limits:
       compactor_blocks_retention_period: 7d
-      ingestion_rate: <float> | default = 1000000
-      ingestion_burst_size: <int> | default = 2000000
+      ingestion_rate: 10000000
+      ingestion_burst_size: 20000000
       max_global_series_per_user: 0
     compactor:
       compaction_interval: 30m
