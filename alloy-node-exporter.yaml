@@ -3,3 +3,6 @@ alloy:
     create: false
     name: alloy-node-exporter
     key: config.alloy
+controller:
+  tolerations:
+  - operator: Exists 
