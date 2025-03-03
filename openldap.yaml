@@ -1,0 +1,30 @@
+global:
+  ldapDomain: "morteza.dev"
+  existingSecret: "openldap-creds"
+logLevel: info
+ltb-passwd:
+  ingress:
+    enabled: true
+    annotations: 
+      cert-manager.io/cluster-issuer: letsencrypt
+    path: /
+    pathType: Prefix
+    hosts:
+    - passwd-ldap.cluster.morteza.dev
+    tls:
+    - secretName: passwd-ldap
+      hosts:
+      - passwd-ldap.cluster.morteza.dev
+phpldapadmin:
+  ingress:
+    enabled: true
+    annotations: 
+      cert-manager.io/cluster-issuer: letsencrypt
+    path: /
+    pathType: Prefix
+    hosts:
+    - ldapadm.cluster.morteza.dev
+    tls:
+    - secretName: phpldapadmin
+      hosts:
+      - passwd-ldap.cluster.morteza.dev
