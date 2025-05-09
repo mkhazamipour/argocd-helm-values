@@ -17,7 +17,6 @@ controller:
   tolerations:
    - key: "key"
      operator: "Exists"
-     value: "value"
      effect: "NoSchedule"
   updateStrategy:
     rollingUpdate:
