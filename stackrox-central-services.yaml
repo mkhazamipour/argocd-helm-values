@@ -36,7 +36,7 @@ central:
     enabled: true
     # Specify a custom hostname if desired, otherwise accept the default from OpenShift.
     ingressClassName: nginx
-    host: rhacs.cluster.morteza.dev
+    host: rhacs.morteza.dev
     tls: 
       enabled: true
       secretName: stackrox-tls
