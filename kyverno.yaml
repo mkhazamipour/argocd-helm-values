@@ -3,17 +3,9 @@ cleanupJobs:
     enabled: true
 admissionController:
   replicas: 1
-  serviceMonitor:
-    enabled: true
 backgroundController:
   replicas: 1
-  serviceMonitor:
-    enabled: true
 cleanupController:
   replicas: 1
-  serviceMonitor:
-    enabled: true
 reportsController:
   replicas: 1
-  serviceMonitor:
-    enabled: true
