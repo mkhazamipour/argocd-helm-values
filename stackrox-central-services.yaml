@@ -81,7 +81,7 @@ scannerV4:
         storageClass: hcloud-volumes
       none: false
 scanner:
-  disable: false
+  disable: true
   replicas: 3
   resources:
     requests:
