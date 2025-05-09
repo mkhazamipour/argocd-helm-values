@@ -1,6 +1,6 @@
 controller:
   watchIngressWithoutClass: true
-  hostNetwork: true
+  hostNetwork: false
   hostPort:
     enabled: true
   kind: DaemonSet
