@@ -15,10 +15,10 @@ ingress:
   annotations: 
     cert-manager.io/cluster-issuer: letsencrypt
   hosts:
-    - grafana.cluster.morteza.dev
+    - grafana.morteza.dev
   tls: 
     - secretName: grafana-cert
       hosts:
-        - grafana.cluster.morteza.dev
+        - grafana.morteza.dev
 deploymentStrategy:
   type: Recreate
