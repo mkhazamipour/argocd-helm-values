@@ -1,9 +1,8 @@
 serviceMonitor:
-  enabled: true
+  enabled: false
 persistence:
   type: pvc
   enabled: false
-  # storageClassName: default
   accessModes:
     - ReadWriteOnce
   size: 10Gi
@@ -11,20 +10,6 @@ admin:
   existingSecret: "grafana-admin-password"
   userKey: admin-user
   passwordKey: admin-password
-# grafana.ini:
-#   paths:
-#     data: /var/lib/grafana/
-#     logs: /var/log/grafana
-#     plugins: /var/lib/grafana/plugins
-#     provisioning: /etc/grafana/provisioning
-#   analytics:
-#     check_for_updates: true
-#   log:
-#     mode: console
-#   grafana_net:
-#     url: https://grafana.net
-#   server:
-#     domain: "{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''{{ end }}"
 ingress:
   enabled: true
   annotations: 
