@@ -3,7 +3,7 @@ controller:
   hostNetwork: true
   hostPort:
     enabled: true
-  kind: DaemonSet
+  kind: Deployment
   service:
     type: NodePort
   metrics:
