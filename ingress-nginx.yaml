@@ -19,5 +19,8 @@ controller:
      operator: "Exists"
      value: "value"
      effect: "NoSchedule"
+  updateStrategy:
+    rollingUpdate:
+    type: Recreate
 defaultBackend:
   enabled: true
