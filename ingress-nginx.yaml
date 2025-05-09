@@ -15,7 +15,7 @@ controller:
   nodeSelector:
     router: enabled
   tolerations:
-   - key: "key"
+   - key: "router"
      operator: "Exists"
      effect: "NoSchedule"
   updateStrategy:
