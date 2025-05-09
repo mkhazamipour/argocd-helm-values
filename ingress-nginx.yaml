@@ -14,5 +14,10 @@ controller:
     enabled: false
   nodeSelector:
     router: enabled
+  tolerations:
+   - key: "key"
+     operator: "Exists"
+     value: "value"
+     effect: "NoSchedule"
 defaultBackend:
   enabled: true
