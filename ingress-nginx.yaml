@@ -4,10 +4,15 @@ controller:
   hostPort:
     enabled: true
   kind: Deployment
-  dnsPolicy: ClusterFirstWithHostNet
   service:
     type: NodePort
   metrics:
     enabled: false
     serviceMonitor:
       enabled: true
+  admissionWebhooks:
+    enabled: false
+  nodeSelector:
+    router: enabled
+defaultBackend:
+  enabled: true
