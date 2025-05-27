@@ -1,10 +1,8 @@
 global:
   ldapDomain: "morteza.dev"
-  existingSecret: "openldap-creds"
-logLevel: info
+  existingSecret: "ldap-credentials"
+replicaCount: 1
 ltb-passwd:
-  ingress:
-    enabled: false
+  enabled : false
 phpldapadmin:
-  ingress:
-    enabled: false
+  enabled: false
