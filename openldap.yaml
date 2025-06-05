@@ -1,8 +1,10 @@
 global:
   ldapDomain: "morteza.dev"
   existingSecret: "ldap-credentials"
-replicaCount: 3
+replicaCount: 1
 ltb-passwd:
   enabled : false
 phpldapadmin:
+  enabled: false
+replication:
   enabled: false
