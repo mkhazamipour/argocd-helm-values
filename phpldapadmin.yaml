@@ -1,3 +1,6 @@
+image:
+  repository: phpldapadmin/phpldapadmin
+  tag: "2.1.4"
 env:
   appUrl: "https://pla.morteza.dev"
     # LDAP server configuration
