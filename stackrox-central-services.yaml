@@ -81,8 +81,8 @@ scannerV4:
         storageClass: hcloud-volumes
       none: false
 scanner:
-  disable: true
-  replicas: 3
+  disable: false
+  replicas: 1
   resources:
     requests:
       memory: "1000Mi"
