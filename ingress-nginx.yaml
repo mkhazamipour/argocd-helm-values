@@ -11,7 +11,7 @@ controller:
     serviceMonitor:
       enabled: true
   admissionWebhooks:
-    enabled: true
+    enabled: false
   nodeSelector:
     router: enabled
   tolerations:
