@@ -2,7 +2,7 @@ serviceMonitor:
   enabled: false
 persistence:
   type: pvc
-  enabled: false
+  enabled: true
   accessModes:
     - ReadWriteOnce
   size: 10Gi
@@ -11,14 +11,6 @@ admin:
   userKey: admin-user
   passwordKey: admin-password
 ingress:
-  enabled: true
-  annotations: 
-    cert-manager.io/cluster-issuer: letsencrypt
-  hosts:
-    - grafana.morteza.dev
-  tls: 
-    - secretName: grafana-cert
-      hosts:
-        - grafana.morteza.dev
+  enabled: false
 deploymentStrategy:
   type: Recreate
