@@ -2,3 +2,4 @@ scannerV4:
   disable: true
 scanner:
   disable: true
+clusterName: hetzner
