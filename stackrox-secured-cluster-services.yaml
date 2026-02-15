@@ -3,3 +3,5 @@ scannerV4:
 scanner:
   disable: true
 clusterName: hetzner
+system:
+  enablePodSecurityPolicies: false
